@@ -1,91 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>For Swara | A Journey of Love</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <title>For Swara ❤️</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="particle-container"></div>
-    <audio id="bg-music" loop>
-        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
-    </audio>
 
-    <main id="main-container">
-        <section id="hero" class="active">
-            <h1 class="glow-text">Hi, Swara</h1>
-            <p>Our journey began in March... <br>Are you ready to unlock my heart?</p>
-            <button onclick="startJourney()" class="btn-glow">Start the Journey</button>
-        </section>
+<div class="container">
 
-        <section id="game1" class="hidden">
-            <h2>Catch My Hearts</h2>
-            <p>Tap 5 hearts to prove your reflex, Pookie!</p>
-            <div id="heart-zone"></div>
-            <div class="score">Score: <span id="score1">0</span>/5</div>
-        </section>
+  <section class="hero">
+    <h1>Happy Valentine's Day, Swara ❤️</h1>
+    <p>Tap below to begin your surprise...</p>
+    <button id="startBtn">Start</button>
+  </section>
 
-        <section id="game2" class="hidden">
-            <h2>Our Memory Mosaic</h2>
-            <p>Tap the tiles to reveal our secret message.</p>
-            <div id="mosaic-grid" class="grid-2x2">
-                <div class="tile" onclick="revealTile(this)">?</div>
-                <div class="tile" onclick="revealTile(this)">?</div>
-                <div class="tile" onclick="revealTile(this)">?</div>
-                <div class="tile" onclick="revealTile(this)">?</div>
-            </div>
-        </section>
+  <section class="challenge hidden" id="challenge1">
+    <h2>First Challenge 💘</h2>
+    <p>When did our story begin?</p>
+    <input type="text" id="answer1" placeholder="Type the month...">
+    <button onclick="checkAnswer1()">Unlock</button>
+  </section>
 
-        <section id="game3" class="hidden">
-            <h2>The Love Quiz</h2>
-            <p id="quiz-q">When did our journey start?</p>
-            <div class="quiz-options">
-                <button onclick="checkQuiz(true)">March</button>
-                <button onclick="checkQuiz(false)">January</button>
-            </div>
-        </section>
+  <section class="memory hidden" id="memorySection">
+    <h2>Core Memory Unlock 🔓</h2>
+    <p>What special date do we always remember?</p>
+    <input type="text" id="answer2" placeholder="Hint: August ...">
+    <button onclick="checkAnswer2()">Unlock</button>
+  </section>
 
-        <section id="game4" class="hidden">
-            <h2>Speed Compliments</h2>
-            <p>Tap the 'Cute' button 10 times fast!</p>
-            <button id="comp-btn" onclick="tapCompliment()">STUNNING</button>
-            <div class="progress-box"><div id="comp-bar"></div></div>
-        </section>
+  <section class="freaky hidden" id="freakySection">
+    <h2>Confession 😈</h2>
+    <p>Tap the heart 5 times quickly...</p>
+    <div class="heart" id="tapHeart">❤️</div>
+  </section>
 
-        <section id="game5" class="hidden">
-            <h2>Swipe for a Secret</h2>
-            <div id="swipe-area">
-                <div id="swipe-handle">SWIPE ME RIGHT</div>
-                <div id="hidden-note">"You're my safe place."</div>
-            </div>
-        </section>
-
-        <section id="game6" class="hidden">
-            <h2>Destiny Spinner</h2>
-            <div id="spinner">❤️</div>
-            <button onclick="spin()" id="spin-btn">Spin for Us</button>
-        </section>
-
-        <section id="final-unlock" class="hidden">
-            <div class="heart-explosion">💍</div>
-            <h2>All Seals Broken</h2>
-            <button onclick="startLetter()" class="btn-glow">Read My Heart</button>
-        </section>
-
-        <section id="letter-section" class="hidden">
-            <div id="typewriter-text"></div>
-            <div id="signature" class="hidden">
-                <p>Forever yours,<br><strong>Prateek</strong></p>
-            </div>
-        </section>
-    </main>
-
-    <div id="progress-container">
-        <div id="progress-bar"></div>
+  <section class="letter hidden" id="finalLetter">
+    <h2>For You 💌</h2>
+    <div class="letter-content">
+<pre>
+My dear Kuchupuchu Wifey, Sugarplum, Pookie, Cutie, Sweetie,
+Looking back at where we started in March, I never imagined I would fall this deeply, this hopelessly — and sometimes this freakily — in love with you.
+You are not just my girlfriend.
+You are my safe place.
+My late-night conversation partner.
+My everything.
+Every random 2AM conversation reminds me that love isn’t just about romance — it’s about connection. You’re the one who turns simple late-night talks into core memories.
+What I love most about you isn’t only how stunningly beautiful you are (though, wow… you really are).
+It’s your soul.
+It’s the way you tolerate my cheesiness.
+The way you laugh at our inside jokes.
+The way you stand by me when I’m being a complete mess.
+I love how you laugh.
+I love how dramatic and adorable you can be.
+I love how you pretend to be mad but melt in seconds.
+I love how deeply you care.
+I love that you exist.
+You are my chaos and my calm.
+My peace and my excitement.
+My babieeeee forever.
+And if life ever tests us, I want you to remember this:
+I will choose you.
+Again.
+And again.
+And again.
+Not just today.
+Not just this Valentine’s.
+But every single day.
+Thank you for loving me.
+Thank you for being mine.
+Thank you for letting me be yours.
+I love you more than words can ever fit into a webpage.
+Forever yours,
+Prateek
+</pre>
     </div>
+  </section>
 
-    <script src="script.js"></script>
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>
