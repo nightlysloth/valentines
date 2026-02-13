@@ -1,82 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-  <title>For Swara ❤️</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>For Swara ❤️</title>
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
 </head>
 <body>
 
+<div class="background-hearts"></div>
+
 <div class="container">
 
-  <section class="hero">
-    <h1>Happy Valentine's Day, Swara ❤️</h1>
-    <p>Tap below to begin your surprise...</p>
-    <button id="startBtn">Start</button>
-  </section>
+<section class="hero card">
+  <h1>Happy Valentine’s Day, Swara</h1>
+  <p>A little journey before your surprise...</p>
+  <button id="startBtn">Begin</button>
+</section>
 
-  <section class="challenge hidden" id="challenge1">
-    <h2>First Challenge 💘</h2>
-    <p>When did our story begin?</p>
-    <input type="text" id="answer1" placeholder="Type the month...">
-    <button onclick="checkAnswer1()">Unlock</button>
-  </section>
+<section class="challenge hidden card" id="challenge1">
+  <h2>First Memory 💘</h2>
+  <p>When did our story begin?</p>
+  <input type="text" id="answer1" placeholder="Type the month">
+  <button onclick="checkAnswer1()">Unlock</button>
+</section>
 
-  <section class="memory hidden" id="memorySection">
-    <h2>Core Memory Unlock 🔓</h2>
-    <p>What special date do we always remember?</p>
-    <input type="text" id="answer2" placeholder="Hint: August ...">
-    <button onclick="checkAnswer2()">Unlock</button>
-  </section>
+<section class="memory hidden card" id="memorySection">
+  <h2>Core Date 🔐</h2>
+  <p>What special date do we always remember?</p>
+  <input type="text" id="answer2" placeholder="Hint: August ...">
+  <button onclick="checkAnswer2()">Unlock</button>
+</section>
 
-  <section class="freaky hidden" id="freakySection">
-    <h2>Confession 😈</h2>
-    <p>Tap the heart 5 times quickly...</p>
-    <div class="heart" id="tapHeart">❤️</div>
-  </section>
+<section class="freaky hidden card" id="freakySection">
+  <h2>Confession 😈</h2>
+  <p>Tap the heart 5 times quickly...</p>
+  <div class="heart" id="tapHeart">❤</div>
+</section>
 
-  <section class="letter hidden" id="finalLetter">
-    <h2>For You 💌</h2>
-    <div class="letter-content">
-<pre>
+<section class="letter hidden" id="finalLetter">
+  <div class="letter-wrapper">
+    <div class="letter-paper">
+      <div class="letter-title">For My Swara</div>
+      <div class="letter-content">
 My dear Kuchupuchu Wifey, Sugarplum, Pookie, Cutie, Sweetie,
+
 Looking back at where we started in March, I never imagined I would fall this deeply, this hopelessly — and sometimes this freakily — in love with you.
+
 You are not just my girlfriend.
+
 You are my safe place.
 My late-night conversation partner.
+My chocolate thief.
+My teddy-bear cuddler.
 My everything.
+
 Every random 2AM conversation reminds me that love isn’t just about romance — it’s about connection. You’re the one who turns simple late-night talks into core memories.
+
 What I love most about you isn’t only how stunningly beautiful you are (though, wow… you really are).
+
 It’s your soul.
 It’s the way you tolerate my cheesiness.
 The way you laugh at our inside jokes.
 The way you stand by me when I’m being a complete mess.
+
 I love how you laugh.
 I love how dramatic and adorable you can be.
 I love how you pretend to be mad but melt in seconds.
 I love how deeply you care.
 I love that you exist.
+
 You are my chaos and my calm.
 My peace and my excitement.
+My wild and my soft.
 My babieeeee forever.
+
 And if life ever tests us, I want you to remember this:
+
 I will choose you.
 Again.
 And again.
 And again.
+
 Not just today.
 Not just this Valentine’s.
 But every single day.
+
 Thank you for loving me.
 Thank you for being mine.
 Thank you for letting me be yours.
+
 I love you more than words can ever fit into a webpage.
+
 Forever yours,
+
 Prateek
-</pre>
+      </div>
     </div>
-  </section>
+  </div>
+</section>
 
 </div>
 
