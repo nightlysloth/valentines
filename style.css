@@ -1,40 +1,59 @@
-body {
+* {
   margin: 0;
-  font-family: 'Georgia', serif;
-  background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
-  color: white;
-  text-align: center;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Playfair Display', serif;
+  background: linear-gradient(135deg, #000000, #1a001a, #330000);
+  color: #fff;
+  min-height: 100vh;
   overflow-x: hidden;
 }
 
 .container {
-  padding: 20px;
+  padding: 25px;
+  text-align: center;
 }
 
-section {
+.card {
   margin-top: 80px;
-  animation: fadeIn 1s ease forwards;
+  padding: 30px 20px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 40px rgba(255, 0, 60, 0.2);
+  animation: fadeIn 0.8s ease;
 }
 
-h1, h2 {
-  font-weight: 300;
+h1 {
+  font-size: 28px;
+  margin-bottom: 15px;
+  color: #ff4d6d;
+  text-shadow: 0 0 15px rgba(255, 0, 80, 0.5);
+}
+
+h2 {
+  margin-bottom: 10px;
+  color: #ff758f;
 }
 
 button {
-  background: #ff2e63;
-  border: none;
-  padding: 12px 25px;
-  border-radius: 25px;
-  color: white;
-  font-size: 16px;
   margin-top: 15px;
+  padding: 12px 28px;
+  border-radius: 30px;
+  border: none;
+  font-size: 15px;
+  background: linear-gradient(45deg, #ff004c, #ff4d6d);
+  color: white;
 }
 
 input {
+  margin-top: 10px;
   padding: 10px;
   border-radius: 20px;
   border: none;
-  margin-top: 10px;
   text-align: center;
 }
 
@@ -43,22 +62,60 @@ input {
 }
 
 .heart {
-  font-size: 50px;
+  font-size: 55px;
+  margin-top: 20px;
   cursor: pointer;
   transition: transform 0.2s;
 }
 
 .heart:active {
-  transform: scale(1.3);
+  transform: scale(1.4);
+}
+
+/* Letter Styling */
+
+.letter-wrapper {
+  padding: 30px 15px;
+}
+
+.letter-paper {
+  background: #f8f1e4;
+  color: #2c1b1b;
+  border-radius: 20px;
+  padding: 30px 20px;
+  box-shadow: 0 0 60px rgba(255, 0, 60, 0.4);
+  animation: fadeIn 1s ease;
+}
+
+.letter-title {
+  font-family: 'Dancing Script', cursive;
+  font-size: 28px;
+  margin-bottom: 20px;
+  text-align: center;
 }
 
 .letter-content {
-  background: rgba(255,255,255,0.08);
-  padding: 20px;
-  border-radius: 20px;
-  white-space: pre-wrap;
-  text-align: left;
-  font-size: 14px;
+  font-size: 15px;
+  line-height: 1.8;
+  white-space: pre-line;
+}
+
+/* Background floating hearts */
+
+.background-hearts::before,
+.background-hearts::after {
+  content: "❤ ❤ ❤ ❤ ❤";
+  position: fixed;
+  width: 100%;
+  top: -10%;
+  font-size: 20px;
+  opacity: 0.05;
+  animation: floatHearts 25s linear infinite;
+}
+
+@keyframes floatHearts {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(120vh); }
 }
 
 @keyframes fadeIn {
