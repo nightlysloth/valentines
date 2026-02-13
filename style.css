@@ -1,0 +1,94 @@
+:root {
+  --bg-dark: #0d0d0d;
+  --wine: #5a0f2e;
+  --pink-glow: #ff4d88;
+  --gold: #ffd700;
+  --white: #f5f5f5;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, #0d0d0d, #2a0a16, #5a0f2e);
+  height: 100vh;
+  overflow: hidden;
+  color: var(--white);
+}
+
+.section {
+  display: none;
+  height: 100vh;
+  padding: 40px 20px;
+  text-align: center;
+  animation: fadeIn 0.8s ease;
+}
+
+.section.active {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-title {
+  font-size: 3rem;
+  background: linear-gradient(90deg, var(--pink-glow), var(--gold));
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: glow 2s infinite alternate;
+}
+
+.glow-btn {
+  padding: 12px 25px;
+  margin-top: 20px;
+  border: none;
+  border-radius: 30px;
+  background: var(--pink-glow);
+  color: white;
+  font-weight: 600;
+  box-shadow: 0 0 15px var(--pink-glow);
+  transition: 0.3s;
+}
+
+.glow-btn:active {
+  transform: scale(0.95);
+}
+
+.progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 5px;
+  width: 100%;
+  background: rgba(255,255,255,0.1);
+}
+
+.progress-fill {
+  height: 100%;
+  width: 0%;
+  background: var(--gold);
+  transition: width 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from {opacity:0; transform:translateY(20px);}
+  to {opacity:1; transform:translateY(0);}
+}
+
+@keyframes glow {
+  from {text-shadow: 0 0 10px var(--pink-glow);}
+  to {text-shadow: 0 0 20px var(--gold);}
+}
+
+#letter {
+  white-space: pre-line;
+  text-align: left;
+  max-width: 380px;
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
