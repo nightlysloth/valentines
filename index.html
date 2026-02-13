@@ -1,123 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>For My Swara ❤️</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
-    <style>
-        body { font-family: 'Poppins', sans-serif; overflow-x: hidden; background: linear-gradient(45deg, #ff4d6d, #ff758f, #c9184a); background-size: 400% 400%; animation: gradient 15s ease infinite; }
-        @keyframes gradient { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
-        .glass { background: rgba(255, 255, 255, 0.2); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.3); border-radius: 20px; }
-        .hidden-section { display: none; }
-        .heart-particle { position: absolute; pointer-events: none; animation: float 3s linear forwards; }
-        @keyframes float { to { transform: translateY(-100vh) rotate(360deg); opacity: 0; } }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Swara 💖</title>
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
-<body class="text-white min-h-screen p-4">
 
-    <div id="hero" class="flex flex-col items-center justify-center min-h-screen text-center">
-        <h1 class="text-5xl font-extrabold mb-4 drop-shadow-lg">Hey Swara! 💖</h1>
-        <p class="text-xl mb-8">Ready for a little journey of us?</p>
-        <button onclick="startJourney()" class="bg-white text-rose-600 px-8 py-4 rounded-full font-bold text-xl shadow-2xl active:scale-95 transition-transform">Tap to Enter ➔</button>
-    </div>
+<body>
 
-    <div id="main-content" class="hidden-section space-y-6 pt-10 pb-20">
-        <section class="glass p-6 text-center">
-            <h2 class="text-2xl font-bold mb-2">Our Love Story</h2>
-            <p>From March until forever...</p>
-            <button onclick="alert('Since March, every day has been better because of you. You are my chaos and my calm.')" class="mt-4 bg-rose-500 px-4 py-2 rounded-lg">Open Memory 📖</button>
-        </section>
+<audio id="bgMusic" loop>
+  <source src="music.mp3" type="audio/mp3">
+</audio>
 
-        <section id="game-zone" class="glass p-6 text-center">
-            <h2 class="text-2xl font-bold mb-4">Game: Catch My Love</h2>
-            <p id="game-status" class="mb-4">Catch 5 hearts to unlock my letter!</p>
-            <div id="game-canvas" class="relative h-64 bg-rose-900/30 rounded-xl overflow-hidden touch-none">
-                </div>
-            <p class="mt-2 font-bold">Score: <span id="score">0</span></p>
-        </section>
+<div id="particleContainer"></div>
 
-        <section id="letter-section" class="glass p-6 opacity-50 pointer-events-none transition-all duration-500">
-            <h2 class="text-2xl font-bold mb-4">The Final Surprise 💌</h2>
-            <div id="letter-content" class="text-left text-lg leading-relaxed space-y-4">
-                </div>
-            <button id="read-btn" onclick="typeLetter()" class="hidden mt-4 bg-white text-rose-600 px-6 py-2 rounded-full font-bold">Read My Heart</button>
-        </section>
-    </div>
+<div class="progress-bar">
+  <div class="progress-fill" id="progressFill"></div>
+</div>
 
-    <script>
-        let score = 0;
-        const letterText = `My dear Kuchupuchu Wifey, Sugarplum, Pookie, Cutie, Sweetie,
+<section id="hero" class="section active">
+  <h1 class="hero-title">Swara</h1>
+  <p class="hero-sub">A love story in motion...</p>
+  <button class="glow-btn" onclick="startJourney()">Begin Our Journey</button>
+</section>
 
-Looking back at where we started in March, I never imagined I would fall this deeply, this hopelessly — and sometimes this freakily — in love with you. 
+<section id="heartGame" class="section">
+  <h2>Catch My Heart 💖</h2>
+  <div id="heartContainer"></div>
+  <p>Score: <span id="heartScore">0</span>/10</p>
+</section>
 
-You are not just my girlfriend. You are my safe place. My late-night conversation partner. My chocolate thief. My teddy-bear cuddler. My everything. Every random 2AM conversation reminds me that love isn’t just about romance — it’s about connection. 
+<section id="quizGame" class="section">
+  <h2>How Well Do You Know Us? 💌</h2>
+  <div id="quizContainer"></div>
+</section>
 
-You’re the one who turns simple late-night talks into core memories. What I love most about you isn’t only how stunningly beautiful you are (though, wow… you really are). It’s your soul. It’s the way you tolerate my cheesiness. The way you laugh at our inside jokes. The way you stand by me when I’m being a complete mess. 
+<section id="tapGame" class="section">
+  <h2>Tap The Real Compliment 🎯</h2>
+  <div id="tapOptions"></div>
+</section>
 
-I love how you laugh. I love how dramatic and adorable you can be. I love how you pretend to be mad but melt in seconds. I love how deeply you care. I love that you exist. You are my chaos and my calm. My peace and my excitement. My wild and my soft. My babieeeee forever. 
+<section id="swipeGame" class="section">
+  <h2>Swipe To Reveal 💘</h2>
+  <div id="swipeBox">Swipe Me →</div>
+</section>
 
-And if life ever tests us, I want you to remember this: I will choose you. Again. And again. And again. Not just today. Not just this Valentine’s. But every single day. 
+<section id="spinnerGame" class="section">
+  <h2>Compatibility Spinner 🎲</h2>
+  <div id="spinner">💞</div>
+  <button class="glow-btn" onclick="spin()">Spin</button>
+  <p id="spinResult"></p>
+</section>
 
-Thank you for loving me. Thank you for being mine. Thank you for letting me be yours. I love you more than words can ever fit into a webpage. 
+<section id="finalSection" class="section">
+  <h2>One Last Thing 💍</h2>
+  <button class="glow-btn" onclick="unlockFinal()">Unlock Final Letter</button>
+</section>
 
-Forever yours, 
-Prateek.`;
+<section id="letterSection" class="section">
+  <div id="letter"></div>
+</section>
 
-        function startJourney() {
-            document.getElementById('hero').classList.add('hidden');
-            document.getElementById('main-content').classList.remove('hidden-section');
-            spawnHeartGame();
-        }
-
-        function spawnHeartGame() {
-            const canvas = document.getElementById('game-canvas');
-            const interval = setInterval(() => {
-                if (score >= 5) {
-                    clearInterval(interval);
-                    document.getElementById('game-status').innerText = "You caught my love! Letter Unlocked.";
-                    document.getElementById('letter-section').classList.remove('opacity-50', 'pointer-events-none');
-                    document.getElementById('read-btn').classList.remove('hidden');
-                    return;
-                }
-                const heart = document.createElement('div');
-                heart.innerHTML = '❤️';
-                heart.className = 'absolute cursor-pointer text-3xl transition-all duration-300';
-                heart.style.left = Math.random() * 80 + 10 + '%';
-                heart.style.top = '0px';
-                canvas.appendChild(heart);
-
-                let pos = 0;
-                const fall = setInterval(() => {
-                    pos += 2;
-                    heart.style.top = pos + 'px';
-                    if (pos > 250) { clearInterval(fall); heart.remove(); }
-                }, 20);
-
-                heart.onclick = () => {
-                    score++;
-                    document.getElementById('score').innerText = score;
-                    heart.remove();
-                };
-            }, 1000);
-        }
-
-        function typeLetter() {
-            const container = document.getElementById('letter-content');
-            document.getElementById('read-btn').classList.add('hidden');
-            let i = 0;
-            container.innerText = "";
-            function typing() {
-                if (i < letterText.length) {
-                    container.innerText += letterText.charAt(i);
-                    i++;
-                    setTimeout(typing, 30);
-                    window.scrollTo(0, document.body.scrollHeight);
-                }
-            }
-            typing();
-        }
-    </script>
+<script src="script.js"></script>
 </body>
 </html>
