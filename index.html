@@ -1,68 +1,112 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For Swara 💖</title>
-<link rel="stylesheet" href="style.css">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>For My Swara | A Love Journey</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
+    <div class="bg-overlay"></div>
+    <div id="particle-container"></div>
 
-<audio id="bgMusic" loop>
-  <source src="music.mp3" type="audio/mp3">
-</audio>
+    <div id="music-control" class="floating-btn">🎵</div>
+    <audio id="bg-music" loop>
+        <source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mpeg">
+    </audio>
 
-<div id="particleContainer"></div>
+    <div class="progress-container">
+        <div id="progress-bar"></div>
+    </div>
 
-<div class="progress-bar">
-  <div class="progress-fill" id="progressFill"></div>
-</div>
+    <main id="main-stage">
+        <section id="hero" class="active">
+            <div class="glass-card">
+                <h1 class="glow-text">Swara</h1>
+                <p class="subtitle">My Everything. My Forever.</p>
+                <button class="primary-btn" onclick="nextSection(1)">Begin Our Journey</button>
+            </div>
+        </section>
 
-<section id="hero" class="section active">
-  <h1 class="hero-title">Swara</h1>
-  <p class="hero-sub">A love story in motion...</p>
-  <button class="glow-btn" onclick="startJourney()">Begin Our Journey</button>
-</section>
+        <section id="section-1" class="hidden">
+            <div class="game-box">
+                <h2>Catch My Love</h2>
+                <p>Tap 5 floating hearts to prove your focus!</p>
+                <div id="heart-game-area"></div>
+                <div class="score">Hearts: <span id="heart-score">0</span>/5</div>
+            </div>
+        </section>
 
-<section id="heartGame" class="section">
-  <h2>Catch My Heart 💖</h2>
-  <div id="heartContainer"></div>
-  <p>Score: <span id="heartScore">0</span>/10</p>
-</section>
+        <section id="section-2" class="hidden">
+            <div class="game-box">
+                <h2>The Love Quiz</h2>
+                <div id="quiz-container">
+                    <p id="question">When did we start our journey?</p>
+                    <div class="options">
+                        <button onclick="checkQuiz(false)">January</button>
+                        <button onclick="checkQuiz(true)">March</button>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-<section id="quizGame" class="section">
-  <h2>How Well Do You Know Us? 💌</h2>
-  <div id="quizContainer"></div>
-</section>
+        <section id="section-3" class="hidden">
+            <div class="game-box">
+                <h2>Memory Match</h2>
+                <p>Find the pairs of our affection.</p>
+                <div class="memory-grid" id="memory-grid"></div>
+            </div>
+        </section>
 
-<section id="tapGame" class="section">
-  <h2>Tap The Real Compliment 🎯</h2>
-  <div id="tapOptions"></div>
-</section>
+        <section id="section-4" class="hidden">
+            <div class="game-box">
+                <h2>Rapid Romance</h2>
+                <p>Tap the compliment! Be fast!</p>
+                <div id="tap-game-target" class="glow-btn">TAP ME!</div>
+                <div class="timer-bar"><div id="timer-fill"></div></div>
+            </div>
+        </section>
 
-<section id="swipeGame" class="section">
-  <h2>Swipe To Reveal 💘</h2>
-  <div id="swipeBox">Swipe Me →</div>
-</section>
+        <section id="section-5" class="hidden">
+            <div class="game-box">
+                <h2>A Hidden Secret</h2>
+                <p>Swipe across the card to reveal a note...</p>
+                <div class="swipe-card" id="swipe-card">
+                    <div class="overlay-scratch" id="scratch">SWIPE TO REVEAL</div>
+                    <div class="hidden-msg">I love you more than 2AM talks.</div>
+                </div>
+            </div>
+        </section>
 
-<section id="spinnerGame" class="section">
-  <h2>Compatibility Spinner 🎲</h2>
-  <div id="spinner">💞</div>
-  <button class="glow-btn" onclick="spin()">Spin</button>
-  <p id="spinResult"></p>
-</section>
+        <section id="section-6" class="hidden">
+            <div class="game-box">
+                <h2>The Destiny Wheel</h2>
+                <div id="spinner">?</div>
+                <button class="primary-btn" id="spin-btn" onclick="spinWheel()">Check Compatibility</button>
+            </div>
+        </section>
 
-<section id="finalSection" class="section">
-  <h2>One Last Thing 💍</h2>
-  <button class="glow-btn" onclick="unlockFinal()">Unlock Final Letter</button>
-</section>
+        <section id="final-letter" class="hidden">
+            <div class="letter-paper">
+                <div id="typewriter-text"></div>
+                <div id="signature" class="hidden">
+                    <p>Forever yours,</p>
+                    <h3>Prateek</h3>
+                </div>
+            </div>
+        </section>
+    </main>
 
-<section id="letterSection" class="section">
-  <div id="letter"></div>
-</section>
+    <div id="unlock-modal" class="modal hidden">
+        <div class="modal-content">
+            <div class="confetti">💖</div>
+            <h2>Chapter Unlocked!</h2>
+            <p>You're one step closer to my heart.</p>
+            <button onclick="closeModal()">Continue</button>
+        </div>
+    </div>
 
-<script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
