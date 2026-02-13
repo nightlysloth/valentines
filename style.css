@@ -1,128 +1,67 @@
-:root {
-    --wine: #4a0404;
-    --burgundy: #800020;
-    --pink: #ff4d6d;
-    --gold: #d4af37;
-    --black: #0a0a0a;
-    --text: #fff0f3;
-}
-
-* { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-
 body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Poppins', sans-serif;
-    background: radial-gradient(circle at center, var(--burgundy), var(--black));
-    color: var(--text);
-    overflow: hidden;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+  margin: 0;
+  font-family: 'Georgia', serif;
+  background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+  color: white;
+  text-align: center;
+  overflow-x: hidden;
 }
 
-#main-container {
-    width: 90%;
-    max-width: 400px;
-    z-index: 10;
+.container {
+  padding: 20px;
 }
 
 section {
-    display: none;
-    animation: fadeIn 0.8s ease-out;
+  margin-top: 80px;
+  animation: fadeIn 1s ease forwards;
 }
 
-section.active { display: block; }
-
-.hidden { display: none !important; }
-
-/* Typography & Glow */
-.glow-text {
-    font-size: 2.5rem;
-    color: var(--pink);
-    text-shadow: 0 0 15px var(--pink), 0 0 30px var(--wine);
-    margin-bottom: 20px;
+h1, h2 {
+  font-weight: 300;
 }
 
-.btn-glow {
-    background: var(--pink);
-    border: none;
-    padding: 15px 30px;
-    border-radius: 50px;
-    color: white;
-    font-weight: 600;
-    box-shadow: 0 0 20px var(--pink);
-    transition: transform 0.2s;
+button {
+  background: #ff2e63;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 25px;
+  color: white;
+  font-size: 16px;
+  margin-top: 15px;
 }
 
-.btn-glow:active { transform: scale(0.9); }
-
-/* Progress Bar */
-#progress-container {
-    position: fixed;
-    bottom: 20px;
-    width: 80%;
-    height: 6px;
-    background: rgba(255,255,255,0.1);
-    border-radius: 10px;
+input {
+  padding: 10px;
+  border-radius: 20px;
+  border: none;
+  margin-top: 10px;
+  text-align: center;
 }
 
-#progress-bar {
-    width: 0%;
-    height: 100%;
-    background: var(--gold);
-    box-shadow: 0 0 10px var(--gold);
-    transition: width 0.5s ease;
+.hidden {
+  display: none;
 }
 
-/* Heart Catch Game */
-#heart-zone {
-    height: 250px;
-    position: relative;
-    background: rgba(0,0,0,0.3);
-    border-radius: 15px;
-    overflow: hidden;
+.heart {
+  font-size: 50px;
+  cursor: pointer;
+  transition: transform 0.2s;
 }
 
-.falling-heart {
-    position: absolute;
-    cursor: pointer;
-    font-size: 2rem;
-    animation: float 2s linear forwards;
+.heart:active {
+  transform: scale(1.3);
 }
 
-/* Mosaic Game */
-.grid-2x2 {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
+.letter-content {
+  background: rgba(255,255,255,0.08);
+  padding: 20px;
+  border-radius: 20px;
+  white-space: pre-wrap;
+  text-align: left;
+  font-size: 14px;
 }
 
-.tile {
-    height: 80px;
-    background: var(--wine);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.5rem;
-    border: 2px solid var(--gold);
-    border-radius: 10px;
+@keyframes fadeIn {
+  from {opacity: 0; transform: translateY(20px);}
+  to {opacity: 1; transform: translateY(0);}
 }
-
-.tile.revealed { background: var(--pink); border-color: white; }
-
-/* Typewriter */
-#typewriter-text {
-    text-align: left;
-    font-size: 0.95rem;
-    line-height: 1.6;
-    max-height: 70vh;
-    overflow-y: auto;
-    padding-right: 10px;
-}
-
-/* Animations */
-@keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-@keyframes float { from { top: 110%; } to { top: -10%; } }
