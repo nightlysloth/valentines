@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>For My Babieeeeeee ❤️</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #ff4d6d;
+            --secondary: #ff758f;
+            --accent: #c9184a;
+            --bg-gradient: linear-gradient(135deg, #590d22 0%, #800f2f 50%, #a4133c 100%);
+            --glass: rgba(255, 255, 255, 0.15);
+        }
+
+        * {
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            background: var(--bg-gradient);
+            color: white;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* Animated Background */
+        .bg-elements {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .floating-heart {
+            position: absolute;
+            color: rgba(255, 255, 255, 0.2);
+            animation: float 10s linear infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(110vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+        }
+
+        /* Layout */
+        .container {
+            padding: 20px;
+            max-width: 500px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        header {
+            margin-top: 40px;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.8rem;
+            margin: 0;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 10px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 5px;
+            margin: 20px 0;
+            overflow: hidden;
+        }
+
+        #progress-fill {
+            width: 10%;
+            height: 100%;
+            background: var(--primary);
+            transition: width 0.5s ease;
+        }
+
+        /* Sections & Nodes */
+        .quest-map {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .node {
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 20px;
+            padding: 25px;
+            transition: all 0.3s ease;
+            position: relative;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+
+        .node.locked {
+            filter: grayscale(1) blur(2px);
+            opacity: 0.6;
+            pointer-events: none;
+        }
+
+        .node h3 { margin: 0 0 10px 0; color: #ffccd5; }
+
+        .btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(255, 77, 109, 0.4);
+            transition: transform 0.2s;
+        }
+
+        .btn:active { transform: scale(0.95); }
+
+        /* Game Overlays */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.9);
+            z-index: 1000;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .modal-content {
+            background: #fff;
+            color: #333;
+            width: 100%;
+            max-width: 400px;
+            border-radius: 30px;
+            padding: 30px;
+            text-align: center;
+            position: relative;
+        }
+
+        /* Game Styles */
+        #game-canvas {
+            width: 100%;
+            height: 200px;
+            background: #f0f0f0;
+            border-radius: 15px;
+            margin: 20px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .grid-game {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+
+        .card {
+            height: 80px;
+            background: var(--primary);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: transparent;
+        }
+
+        .card.flipped { color: white; background: #ff8fa3; }
+
+        /* Final Letter */
+        #final-letter {
+            display: none;
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.2rem;
+            line-height: 1.6;
+            text-align: left;
+            background: #fff9f9;
+            color: #444;
+            padding: 40px 25px;
+            border-radius: 5px;
+            box-shadow: inset 0 0 50px rgba(0,0,0,0.1);
+            margin-top: 30px;
+        }
+
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: var(--primary);
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="bg-elements" id="bg-elements"></div>
+
+    <div class="container">
+        <header>
+            <h1>Hey Kuchupuchu! ❤️</h1>
+            <p>Welcome to our Digital Love Adventure. You must unlock my heart, piece by piece.</p>
+            <div class="progress-bar"><div id="progress-fill"></div></div>
+        </header>
+
+        <div class="quest-map">
+            <div class="node" id="node-1">
+                <h3>💖 Step 1: The Heartbeat</h3>
+                <p>Prove your speed! Tap the growing heart 15 times to start our journey.</p>
+                <button class="btn" onclick="openGame(1)">Unlock This</button>
+            </div>
+
+            <div class="node locked" id="node-2">
+                <h3>🗓️ Step 2: Our Milestones</h3>
+                <p>A memory match game featuring our favorite months and days.</p>
+                <button class="btn" onclick="openGame(2)">Unlock This</button>
+            </div>
+
+            <div class="node locked" id="node-3">
+                <h3>🍫 Step 3: Chocolate Craze</h3>
+                <p>Catch the falling treats for your sweet tooth!</p>
+                <button class="btn" onclick="openGame(3)">Unlock This</button>
+            </div>
+
+            <div class="node locked" id="node-4">
+                <h3>🧸 Step 4: Teddy Cuddles</h3>
+                <p>A quick quiz about my favorite person (Hint: It's you, Babieeeeeee).</p>
+                <button class="btn" onclick="openGame(4)">Unlock This</button>
+            </div>
+
+            <div class="node locked" id="node-5">
+                <h3>😏 Step 5: Spicy or Sweet?</h3>
+                <p>Answer a "Would You Rather" to proceed.</p>
+                <button class="btn" onclick="openGame(5)">Unlock This</button>
+            </div>
+
+            <div class="node locked" id="node-6">
+                <h3>🔐 Step 6: The Final Key</h3>
+                <p>Unscramble the secret message to unlock the vault.</p>
+                <button class="btn" onclick="openGame(6)">Open My Heart</button>
+            </div>
+        </div>
+
+        <div id="final-letter">
+            <h2 style="text-align: center;">My Dearest Kuchupuchu,</h2>
+            <p>
+                Looking back at where we started in <strong>March</strong>, I never imagined I'd be this deeply, hopelessly, and sometimes "freakily" in love with you. From the moment <strong>August 3rd</strong> became a permanent mark on my calendar, my world shifted colors.
+            </p>
+            <p>
+                You aren't just my girlfriend; you're my <strong>Babieeeeeee</strong>. You're the one who makes a simple late-night conversation feel like a core memory. I remember every "Teddy Day" cuddle we've joked about and every chocolate craving you've had—honestly, you're sweeter than any Dairy Milk or Godiva could ever be.
+            </p>
+            <p>
+                What I love most about you isn't just how stunningly beautiful you are (though, wow, you really are), it's your soul. It's the way you handle my cheesiness, the way you laugh at our inside jokes, and the way you support me when I'm being a total mess. 
+            </p>
+            <p>
+                I want to promise you today that I'll always be the one to catch your falling chocolates, to give you the warmest teddy bear hugs, and to keep adding new "important dates" to our story. You are my home, my chaos, and my greatest adventure.
+            </p>
+            <p>
+                Thank you for being you. Thank you for choosing me. Happy Valentine's Day, my beautiful Kuchupuchu. I love you more than words can fit into a webpage.
+            </p>
+            <p style="text-align: right; margin-top: 40px;">
+                Forever Yours,<br>
+                <span style="font-size: 1.8rem;">Your Favorite Person ❤️</span>
+            </p>
+        </div>
+    </div>
+
+    <div class="modal" id="game-modal">
+        <div class="modal-content">
+            <h2 id="modal-title">Game Title</h2>
+            <div id="game-area"></div>
+            <p id="game-status"></p>
+            <button class="btn" id="modal-close" style="display:none" onclick="closeModal()">Next Step! ➜</button>
+        </div>
+    </div>
+
+    <script>
+        let currentProgress = 1;
+        const totalSteps = 6;
+
+        // Create Background Hearts
+        function createHearts() {
+            const container = document.getElementById('bg-elements');
+            for(let i=0; i<20; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'floating-heart';
+                heart.innerHTML = '❤️';
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
+                heart.style.animationDelay = Math.random() * 10 + 's';
+                heart.style.animationDuration = (Math.random() * 5 + 5) + 's';
+                container.appendChild(heart);
+            }
+        }
+        createHearts();
+
+        function updateProgress() {
+            const fill = document.getElementById('progress-fill');
+            fill.style.width = (currentProgress / totalSteps * 100) + '%';
+            
+            if(currentProgress > 1) {
+                const prevNode = document.getElementById(`node-${currentProgress-1}`);
+                prevNode.style.background = 'rgba(76, 201, 240, 0.2)';
+                prevNode.querySelector('button').innerHTML = 'Completed ✅';
+                prevNode.querySelector('button').disabled = true;
+            }
+            
+            const nextNode = document.getElementById(`node-${currentProgress}`);
+            if(nextNode) nextNode.classList.remove('locked');
+        }
+
+        function openGame(step) {
+            const modal = document.getElementById('game-modal');
+            const title = document.getElementById('modal-title');
+            const area = document.getElementById('game-area');
+            const status = document.getElementById('game-status');
+            const closeBtn = document.getElementById('modal-close');
+            
+            modal.style.display = 'flex';
+            area.innerHTML = '';
+            status.innerHTML = '';
+            closeBtn.style.display = 'none';
+
+            if(step === 1) {
+                title.innerText = "Tap the Heart!";
+                let count = 0;
+                const heart = document.createElement('div');
+                heart.innerHTML = '❤️';
+                heart.style.fontSize = '50px';
+                heart.style.cursor = 'pointer';
+                heart.style.transition = 'all 0.1s';
+                heart.onclick = () => {
+                    count++;
+                    heart.style.transform = `scale(${1 + count*0.1})`;
+                    status.innerText = `Taps: ${count}/15`;
+                    if(count >= 15) {
+                        status.innerText = "You're fast! ❤️ Unlocked!";
+                        winGame();
+                    }
+                };
+                area.appendChild(heart);
+            } 
+            else if(step === 2) {
+                title.innerText = "Memory Match";
+                const items = ['🗓️', '🗓️', '🍫', '🍫', '🧸', '🧸'];
+                items.sort(() => Math.random() - 0.5);
+                const grid = document.createElement('div');
+                grid.className = 'grid-game';
+                let flipped = [];
+                let matched = 0;
+                items.forEach((icon, i) => {
+                    const card = document.createElement('div');
+                    card.className = 'card';
+                    card.innerText = icon;
+                    card.onclick = () => {
+                        if(flipped.length < 2 && !card.classList.contains('flipped')) {
+                            card.classList.add('flipped');
+                            flipped.push({card, icon});
+                            if(flipped.length === 2) {
+                                if(flipped[0].icon === flipped[1].icon) {
+                                    matched++;
+                                    flipped = [];
+                                    if(matched === 3) winGame();
+                                } else {
+                                    setTimeout(() => {
+                                        flipped.forEach(f => f.card.classList.remove('flipped'));
+                                        flipped = [];
+                                    }, 500);
+                                }
+                            }
+                        }
+                    };
+                    grid.appendChild(card);
+                });
+                area.appendChild(grid);
+            }
+            else if(step === 3) {
+                title.innerText = "Catch the Chocolates!";
+                area.style.height = '200px';
+                area.style.position = 'relative';
+                area.style.background = '#333';
+                area.style.borderRadius = '15px';
+                let score = 0;
+                const interval = setInterval(() => {
+                    const choc = document.createElement('div');
+                    choc.innerHTML = '🍫';
+                    choc.style.position = 'absolute';
+                    choc.style.left = Math.random() * 90 + '%';
+                    choc.style.top = '0';
+                    choc.style.cursor = 'pointer';
+                    choc.style.fontSize = '24px';
+                    choc.onclick = () => {
+                        score++;
+                        choc.remove();
+                        status.innerText = `Chocolates: ${score}/10`;
+                        if(score >= 10) {
+                            clearInterval(interval);
+                            winGame();
+                        }
+                    };
+                    area.appendChild(choc);
+                    choc.animate([{ top: 0 }, { top: '180px' }], { duration: 2000, fill: 'forwards' });
+                    setTimeout(() => choc.remove(), 2000);
+                }, 800);
+            }
+            else if(step === 4) {
+                title.innerText = "The Babieeeeeee Quiz";
+                const q = document.createElement('div');
+                q.innerHTML = `<p>When did our journey officially start?</p>
+                    <button class="btn" onclick="this.parentElement.innerHTML='Correct! Aug 3rd is the best day ever.'; winGame();">August 3rd</button><br><br>
+                    <button class="btn" onclick="alert('Wrong! How could you?!')">August 15th</button>`;
+                area.appendChild(q);
+            }
+            else if(step === 5) {
+                title.innerText = "Would You Rather...";
+                const q = document.createElement('div');
+                q.innerHTML = `<p>Spend 24 hours cuddling... or 24 hours eating chocolate with me?</p>
+                    <button class="btn" onclick="winGame()">Cuddling! 🧸</button><br><br>
+                    <button class="btn" onclick="winGame()">Chocolate! 🍫</button>`;
+                area.appendChild(q);
+            }
+            else if(step === 6) {
+                title.innerText = "One Last Secret";
+                const input = document.createElement('input');
+                input.type = 'text';
+                input.placeholder = "What's your pet name? (Starts with K)";
+                input.style.padding = '10px';
+                input.style.borderRadius = '10px';
+                input.oninput = () => {
+                    if(input.value.toLowerCase() === 'kuchupuchu') {
+                        status.innerText = "ACCESS GRANTED. I love you.";
+                        winGame();
+                    }
+                };
+                area.appendChild(input);
+            }
+        }
+
+        function winGame() {
+            document.getElementById('modal-close').style.display = 'inline-block';
+            document.getElementById('game-status').innerText = "Step Completed! ✨";
+        }
+
+        function closeModal() {
+            document.getElementById('game-modal').style.display = 'none';
+            currentProgress++;
+            updateProgress();
+            
+            if(currentProgress > totalSteps) {
+                document.querySelector('.quest-map').style.display = 'none';
+                document.getElementById('final-letter').style.display = 'block';
+                window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+                launchConfetti();
+            }
+        }
+
+        function launchConfetti() {
+            for(let i=0; i<100; i++) {
+                const c = document.createElement('div');
+                c.className = 'confetti';
+                c.style.left = Math.random() * 100 + 'vw';
+                c.style.top = '-10px';
+                c.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+                document.body.appendChild(c);
+                c.animate([
+                    { transform: 'translateY(0) rotate(0)', opacity: 1 },
+                    { transform: `translateY(100vh) rotate(${Math.random() * 360}deg)`, opacity: 0 }
+                ], { duration: Math.random() * 3000 + 2000 });
+            }
+        }
+    </script>
+</body>
+</html>
