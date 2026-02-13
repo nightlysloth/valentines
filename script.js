@@ -17,7 +17,7 @@ function checkAnswer1() {
     challenge1.classList.add("hidden");
     memorySection.classList.remove("hidden");
   } else {
-    alert("Hint: The month our love began ❤️");
+    alert("Hint: The month our story began ❤️");
   }
 }
 
@@ -36,5 +36,6 @@ document.getElementById("tapHeart").addEventListener("click", () => {
   if (tapCount >= 5) {
     freakySection.classList.add("hidden");
     finalLetter.classList.remove("hidden");
+    window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
   }
 });
