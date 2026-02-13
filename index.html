@@ -1,317 +1,123 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For My Kuchupuchu 💖</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet">
-
-<style>
-:root{
-  --pink:#ff4d88;
-  --rose:#ff1e56;
-  --deep:#8a0f3d;
-  --purple:#6a0572;
-  --glass:rgba(255,255,255,0.15);
-}
-
-*{margin:0;padding:0;box-sizing:border-box;}
-body{
-  font-family:'Poppins',sans-serif;
-  background:linear-gradient(135deg,#ff758c,#ff7eb3,#c471ed);
-  overflow-x:hidden;
-  color:white;
-}
-
-section{
-  min-height:100vh;
-  padding:40px 20px;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  text-align:center;
-  position:relative;
-}
-
-h1,h2{margin-bottom:15px;}
-button{
-  padding:12px 20px;
-  border:none;
-  border-radius:30px;
-  background:linear-gradient(45deg,var(--rose),var(--pink));
-  color:white;
-  font-weight:600;
-  margin-top:15px;
-  cursor:pointer;
-  font-size:16px;
-}
-
-.glass{
-  background:var(--glass);
-  backdrop-filter:blur(10px);
-  padding:25px;
-  border-radius:20px;
-  box-shadow:0 10px 30px rgba(0,0,0,0.2);
-}
-
-.hidden{display:none;}
-
-.modal{
-  position:fixed;
-  top:0;left:0;
-  width:100%;height:100%;
-  background:rgba(0,0,0,0.7);
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  z-index:999;
-}
-
-.card{
-  width:80px;height:80px;
-  background:white;
-  color:black;
-  margin:5px;
-  display:inline-flex;
-  justify-content:center;
-  align-items:center;
-  font-size:30px;
-  border-radius:12px;
-}
-
-#heartArea{
-  position:relative;
-  width:100%;height:200px;
-  overflow:hidden;
-}
-
-.heart{
-  position:absolute;
-  font-size:30px;
-  cursor:pointer;
-  animation:fall 3s linear forwards;
-}
-
-@keyframes fall{
-  0%{top:-50px;}
-  100%{top:220px;}
-}
-
-.timeline-item{
-  margin:10px 0;
-  padding:10px;
-  background:rgba(255,255,255,0.2);
-  border-radius:12px;
-}
-
-.letter{
-  font-family:'Dancing Script',cursive;
-  font-size:20px;
-  line-height:1.7;
-  text-align:left;
-}
-
-footer{
-  padding:30px;
-  text-align:center;
-  font-size:14px;
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Swara ❤️</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Poppins', sans-serif; overflow-x: hidden; background: linear-gradient(45deg, #ff4d6d, #ff758f, #c9184a); background-size: 400% 400%; animation: gradient 15s ease infinite; }
+        @keyframes gradient { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+        .glass { background: rgba(255, 255, 255, 0.2); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.3); border-radius: 20px; }
+        .hidden-section { display: none; }
+        .heart-particle { position: absolute; pointer-events: none; animation: float 3s linear forwards; }
+        @keyframes float { to { transform: translateY(-100vh) rotate(360deg); opacity: 0; } }
+    </style>
 </head>
+<body class="text-white min-h-screen p-4">
 
-<body>
+    <div id="hero" class="flex flex-col items-center justify-center min-h-screen text-center">
+        <h1 class="text-5xl font-extrabold mb-4 drop-shadow-lg">Hey Swara! 💖</h1>
+        <p class="text-xl mb-8">Ready for a little journey of us?</p>
+        <button onclick="startJourney()" class="bg-white text-rose-600 px-8 py-4 rounded-full font-bold text-xl shadow-2xl active:scale-95 transition-transform">Tap to Enter ➔</button>
+    </div>
 
-<!-- INTRO -->
-<section id="intro">
-  <div class="glass">
-    <h1>Happy Valentine’s Day Babieeeeeee 💖</h1>
-    <p>Welcome, my Kuchupuchu 💕</p>
-    <button onclick="unlock('memory')">Start Our Love Adventure</button>
-  </div>
-</section>
+    <div id="main-content" class="hidden-section space-y-6 pt-10 pb-20">
+        <section class="glass p-6 text-center">
+            <h2 class="text-2xl font-bold mb-2">Our Love Story</h2>
+            <p>From March until forever...</p>
+            <button onclick="alert('Since March, every day has been better because of you. You are my chaos and my calm.')" class="mt-4 bg-rose-500 px-4 py-2 rounded-lg">Open Memory 📖</button>
+        </section>
 
-<!-- MEMORY MATCH GAME -->
-<section id="memory" class="hidden">
-  <div class="glass">
-    <h2>Memory Game 🧠</h2>
-    <p>Match our memories to unlock the next chapter.</p>
-    <div id="memoryGame"></div>
-  </div>
-</section>
+        <section id="game-zone" class="glass p-6 text-center">
+            <h2 class="text-2xl font-bold mb-4">Game: Catch My Love</h2>
+            <p id="game-status" class="mb-4">Catch 5 hearts to unlock my letter!</p>
+            <div id="game-canvas" class="relative h-64 bg-rose-900/30 rounded-xl overflow-hidden touch-none">
+                </div>
+            <p class="mt-2 font-bold">Score: <span id="score">0</span></p>
+        </section>
 
-<!-- CLICK HEART GAME -->
-<section id="clicker" class="hidden">
-  <div class="glass">
-    <h2>Catch My Heart 💓</h2>
-    <p>Catch 10 hearts to unlock.</p>
-    <div id="heartArea"></div>
-    <p id="score">0/10</p>
-  </div>
-</section>
+        <section id="letter-section" class="glass p-6 opacity-50 pointer-events-none transition-all duration-500">
+            <h2 class="text-2xl font-bold mb-4">The Final Surprise 💌</h2>
+            <div id="letter-content" class="text-left text-lg leading-relaxed space-y-4">
+                </div>
+            <button id="read-btn" onclick="typeLetter()" class="hidden mt-4 bg-white text-rose-600 px-6 py-2 rounded-full font-bold">Read My Heart</button>
+        </section>
+    </div>
 
-<!-- QUIZ -->
-<section id="quiz" class="hidden">
-  <div class="glass">
-    <h2>Relationship Quiz 🎀</h2>
-    <p>When did our journey begin?</p>
-    <button onclick="checkQuiz('march')">March</button>
-    <button onclick="checkQuiz('august')">August 3rd</button>
-  </div>
-</section>
+    <script>
+        let score = 0;
+        const letterText = `My dear Kuchupuchu Wifey, Sugarplum, Pookie, Cutie, Sweetie,
 
-<!-- TIMELINE -->
-<section id="timeline" class="hidden">
-  <div class="glass">
-    <h2>Our Timeline 💞</h2>
-    <div class="timeline-item">March — Where it all began 🌸</div>
-    <div class="timeline-item">August 3rd — A date I’ll never forget 💌</div>
-    <div class="timeline-item">Teddy Day 🧸 — Cuddles forever</div>
-    <div class="timeline-item">Chocolate Day 🍫 — Sweet like you</div>
-    <button onclick="unlock('puzzle')">Continue</button>
-  </div>
-</section>
+Looking back at where we started in March, I never imagined I would fall this deeply, this hopelessly — and sometimes this freakily — in love with you. 
 
-<!-- PUZZLE -->
-<section id="puzzle" class="hidden">
-  <div class="glass">
-    <h2>Complete My Sentence 💬</h2>
-    <p>“You are my ____ forever.”</p>
-    <input type="text" id="puzzleInput" placeholder="Type here">
-    <button onclick="checkPuzzle()">Submit</button>
-  </div>
-</section>
+You are not just my girlfriend. You are my safe place. My late-night conversation partner. My chocolate thief. My teddy-bear cuddler. My everything. Every random 2AM conversation reminds me that love isn’t just about romance — it’s about connection. 
 
-<!-- WOULD YOU RATHER -->
-<section id="would" class="hidden">
-  <div class="glass">
-    <h2>Would You Rather 😏</h2>
-    <button onclick="unlock('letter')">Unlimited chocolate 🍫</button>
-    <button onclick="unlock('letter')">Unlimited cuddles with me 🧸</button>
-  </div>
-</section>
+You’re the one who turns simple late-night talks into core memories. What I love most about you isn’t only how stunningly beautiful you are (though, wow… you really are). It’s your soul. It’s the way you tolerate my cheesiness. The way you laugh at our inside jokes. The way you stand by me when I’m being a complete mess. 
 
-<!-- FINAL LETTER -->
-<section id="letter" class="hidden">
-  <div class="glass letter">
-    <h2>To My Forever Babieeeeeee 💖</h2>
+I love how you laugh. I love how dramatic and adorable you can be. I love how you pretend to be mad but melt in seconds. I love how deeply you care. I love that you exist. You are my chaos and my calm. My peace and my excitement. My wild and my soft. My babieeeee forever. 
 
-    <p>
-    My Kuchupuchu,
+And if life ever tests us, I want you to remember this: I will choose you. Again. And again. And again. Not just today. Not just this Valentine’s. But every single day. 
 
-    From that beautiful month of March, when everything between us started unfolding like the softest love story, I never imagined how deeply you would change my world. And then August 3rd — a date engraved in my heart — became one of those moments that felt bigger than time itself.
+Thank you for loving me. Thank you for being mine. Thank you for letting me be yours. I love you more than words can ever fit into a webpage. 
 
-    You are not just my girlfriend. You are my safe place, my late-night conversation partner, my chocolate thief, my teddy bear cuddler, my everything.
+Forever yours, 
+Prateek.`;
 
-    Every Teddy Day 🧸 reminds me how perfectly you fit in my arms. Every Chocolate Day 🍫 reminds me how sweet your smile is. And every random 2AM conversation reminds me that love isn’t just about romance — it’s about connection.
-
-    I love how you laugh.
-    I love how dramatic and cute you can be.
-    I love how you pretend to be mad but melt in seconds.
-    I love how you care.
-    I love how you exist.
-
-    You are my chaos and my calm.
-    My peace and my excitement.
-    My freaky and my soft.
-    My Babieeeeeee forever.
-
-    If life ever tests us, I want you to remember this:
-    I choose you.
-    Again.
-    And again.
-    And again.
-
-    Not just today.
-    Not just this Valentine’s.
-    But in every March, every August 3rd, every Teddy Day, every Chocolate Day.
-
-    Thank you for loving me.
-    Thank you for being mine.
-    Thank you for letting me be yours.
-
-    Forever yours,
-    ❤️
-    </p>
-  </div>
-</section>
-
-<footer>
-Made with insane love for HER NAME 💘
-</footer>
-
-<script>
-function unlock(id){
-  document.getElementById(id).classList.remove('hidden');
-  window.scrollTo({top:document.getElementById(id).offsetTop,behavior:'smooth'});
-}
-
-/* MEMORY GAME */
-const emojis=['🍫','🍫','🧸','🧸','💌','💌'];
-emojis.sort(()=>0.5-Math.random());
-const game=document.getElementById("memoryGame");
-let first=null,second=null,lock=false,matched=0;
-
-emojis.forEach(e=>{
-  const div=document.createElement("div");
-  div.className="card";
-  div.textContent="?";
-  div.dataset.value=e;
-  div.onclick=()=>{
-    if(lock||div.textContent!=="?")return;
-    div.textContent=e;
-    if(!first)first=div;
-    else{
-      second=div;
-      lock=true;
-      setTimeout(()=>{
-        if(first.dataset.value===second.dataset.value){
-          matched++;
-          if(matched===3)unlock('clicker');
-        }else{
-          first.textContent="?";
-          second.textContent="?";
+        function startJourney() {
+            document.getElementById('hero').classList.add('hidden');
+            document.getElementById('main-content').classList.remove('hidden-section');
+            spawnHeartGame();
         }
-        first=second=null;
-        lock=false;
-      },800);
-    }
-  }
-  game.appendChild(div);
-});
 
-/* CLICK HEART */
-let score=0;
-function spawnHeart(){
-  const heart=document.createElement("div");
-  heart.className="heart";
-  heart.textContent="💖";
-  heart.style.left=Math.random()*90+"%";
-  heart.onclick=()=>{
-    score++;
-    document.getElementById("score").textContent=score+"/10";
-    heart.remove();
-    if(score>=10)unlock('quiz');
-  }
-  document.getElementById("heartArea").appendChild(heart);
-  setTimeout(()=>heart.remove(),3000);
-}
-setInterval(spawnHeart,800);
+        function spawnHeartGame() {
+            const canvas = document.getElementById('game-canvas');
+            const interval = setInterval(() => {
+                if (score >= 5) {
+                    clearInterval(interval);
+                    document.getElementById('game-status').innerText = "You caught my love! Letter Unlocked.";
+                    document.getElementById('letter-section').classList.remove('opacity-50', 'pointer-events-none');
+                    document.getElementById('read-btn').classList.remove('hidden');
+                    return;
+                }
+                const heart = document.createElement('div');
+                heart.innerHTML = '❤️';
+                heart.className = 'absolute cursor-pointer text-3xl transition-all duration-300';
+                heart.style.left = Math.random() * 80 + 10 + '%';
+                heart.style.top = '0px';
+                canvas.appendChild(heart);
 
-/* QUIZ */
-function checkQuiz(ans){
-  if(ans==='march')unlock('timeline');
-  else alert("Try again Babieeeeeee 😜");
-}
+                let pos = 0;
+                const fall = setInterval(() => {
+                    pos += 2;
+                    heart.style.top = pos + 'px';
+                    if (pos > 250) { clearInterval(fall); heart.remove(); }
+                }, 20);
 
-/* PUZZLE */
-function checkPuzzle(){
-  const val=document.getElementById("puzzleInput").value.toLowerCase();
-  if(val.includes("mine"))unlock('would');
-  else alert("Hint: It's what you are to me 😘");
-}
-</script>
+                heart.onclick = () => {
+                    score++;
+                    document.getElementById('score').innerText = score;
+                    heart.remove();
+                };
+            }, 1000);
+        }
 
+        function typeLetter() {
+            const container = document.getElementById('letter-content');
+            document.getElementById('read-btn').classList.add('hidden');
+            let i = 0;
+            container.innerText = "";
+            function typing() {
+                if (i < letterText.length) {
+                    container.innerText += letterText.charAt(i);
+                    i++;
+                    setTimeout(typing, 30);
+                    window.scrollTo(0, document.body.scrollHeight);
+                }
+            }
+            typing();
+        }
+    </script>
 </body>
 </html>
