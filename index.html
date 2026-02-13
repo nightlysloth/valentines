@@ -3,108 +3,87 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>For My Swara | A Love Journey</title>
+    <title>For Swara | A Journey of Love</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="bg-overlay"></div>
     <div id="particle-container"></div>
-
-    <div id="music-control" class="floating-btn">🎵</div>
     <audio id="bg-music" loop>
-        <source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mpeg">
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
     </audio>
 
-    <div class="progress-container">
-        <div id="progress-bar"></div>
-    </div>
-
-    <main id="main-stage">
+    <main id="main-container">
         <section id="hero" class="active">
-            <div class="glass-card">
-                <h1 class="glow-text">Swara</h1>
-                <p class="subtitle">My Everything. My Forever.</p>
-                <button class="primary-btn" onclick="nextSection(1)">Begin Our Journey</button>
+            <h1 class="glow-text">Hi, Swara</h1>
+            <p>Our journey began in March... <br>Are you ready to unlock my heart?</p>
+            <button onclick="startJourney()" class="btn-glow">Start the Journey</button>
+        </section>
+
+        <section id="game1" class="hidden">
+            <h2>Catch My Hearts</h2>
+            <p>Tap 5 hearts to prove your reflex, Pookie!</p>
+            <div id="heart-zone"></div>
+            <div class="score">Score: <span id="score1">0</span>/5</div>
+        </section>
+
+        <section id="game2" class="hidden">
+            <h2>Our Memory Mosaic</h2>
+            <p>Tap the tiles to reveal our secret message.</p>
+            <div id="mosaic-grid" class="grid-2x2">
+                <div class="tile" onclick="revealTile(this)">?</div>
+                <div class="tile" onclick="revealTile(this)">?</div>
+                <div class="tile" onclick="revealTile(this)">?</div>
+                <div class="tile" onclick="revealTile(this)">?</div>
             </div>
         </section>
 
-        <section id="section-1" class="hidden">
-            <div class="game-box">
-                <h2>Catch My Love</h2>
-                <p>Tap 5 floating hearts to prove your focus!</p>
-                <div id="heart-game-area"></div>
-                <div class="score">Hearts: <span id="heart-score">0</span>/5</div>
+        <section id="game3" class="hidden">
+            <h2>The Love Quiz</h2>
+            <p id="quiz-q">When did our journey start?</p>
+            <div class="quiz-options">
+                <button onclick="checkQuiz(true)">March</button>
+                <button onclick="checkQuiz(false)">January</button>
             </div>
         </section>
 
-        <section id="section-2" class="hidden">
-            <div class="game-box">
-                <h2>The Love Quiz</h2>
-                <div id="quiz-container">
-                    <p id="question">When did we start our journey?</p>
-                    <div class="options">
-                        <button onclick="checkQuiz(false)">January</button>
-                        <button onclick="checkQuiz(true)">March</button>
-                    </div>
-                </div>
+        <section id="game4" class="hidden">
+            <h2>Speed Compliments</h2>
+            <p>Tap the 'Cute' button 10 times fast!</p>
+            <button id="comp-btn" onclick="tapCompliment()">STUNNING</button>
+            <div class="progress-box"><div id="comp-bar"></div></div>
+        </section>
+
+        <section id="game5" class="hidden">
+            <h2>Swipe for a Secret</h2>
+            <div id="swipe-area">
+                <div id="swipe-handle">SWIPE ME RIGHT</div>
+                <div id="hidden-note">"You're my safe place."</div>
             </div>
         </section>
 
-        <section id="section-3" class="hidden">
-            <div class="game-box">
-                <h2>Memory Match</h2>
-                <p>Find the pairs of our affection.</p>
-                <div class="memory-grid" id="memory-grid"></div>
-            </div>
+        <section id="game6" class="hidden">
+            <h2>Destiny Spinner</h2>
+            <div id="spinner">❤️</div>
+            <button onclick="spin()" id="spin-btn">Spin for Us</button>
         </section>
 
-        <section id="section-4" class="hidden">
-            <div class="game-box">
-                <h2>Rapid Romance</h2>
-                <p>Tap the compliment! Be fast!</p>
-                <div id="tap-game-target" class="glow-btn">TAP ME!</div>
-                <div class="timer-bar"><div id="timer-fill"></div></div>
-            </div>
+        <section id="final-unlock" class="hidden">
+            <div class="heart-explosion">💍</div>
+            <h2>All Seals Broken</h2>
+            <button onclick="startLetter()" class="btn-glow">Read My Heart</button>
         </section>
 
-        <section id="section-5" class="hidden">
-            <div class="game-box">
-                <h2>A Hidden Secret</h2>
-                <p>Swipe across the card to reveal a note...</p>
-                <div class="swipe-card" id="swipe-card">
-                    <div class="overlay-scratch" id="scratch">SWIPE TO REVEAL</div>
-                    <div class="hidden-msg">I love you more than 2AM talks.</div>
-                </div>
-            </div>
-        </section>
-
-        <section id="section-6" class="hidden">
-            <div class="game-box">
-                <h2>The Destiny Wheel</h2>
-                <div id="spinner">?</div>
-                <button class="primary-btn" id="spin-btn" onclick="spinWheel()">Check Compatibility</button>
-            </div>
-        </section>
-
-        <section id="final-letter" class="hidden">
-            <div class="letter-paper">
-                <div id="typewriter-text"></div>
-                <div id="signature" class="hidden">
-                    <p>Forever yours,</p>
-                    <h3>Prateek</h3>
-                </div>
+        <section id="letter-section" class="hidden">
+            <div id="typewriter-text"></div>
+            <div id="signature" class="hidden">
+                <p>Forever yours,<br><strong>Prateek</strong></p>
             </div>
         </section>
     </main>
 
-    <div id="unlock-modal" class="modal hidden">
-        <div class="modal-content">
-            <div class="confetti">💖</div>
-            <h2>Chapter Unlocked!</h2>
-            <p>You're one step closer to my heart.</p>
-            <button onclick="closeModal()">Continue</button>
-        </div>
+    <div id="progress-container">
+        <div id="progress-bar"></div>
     </div>
 
     <script src="script.js"></script>
